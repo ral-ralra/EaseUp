@@ -1525,20 +1525,54 @@ export default function PostureCoach() {
           evaluatePosture(landmarks);
         });
 
-        const camera = new window.Camera(videoRef.current, {
-          width: 320,
-          height: 240,
-          onFrame: async () => {
-            if (!cancelled && videoRef.current) {
-              await faceMesh.send({ image: videoRef.current });
-            }
+        faceMeshRef.current = faceMesh;
+
+        const stream = await navigator.mediaDevices.getUserMedia({
+          video: {
+            width: { ideal: 320 },
+            height: { ideal: 240 },
+            facingMode: "user",
           },
+          audio: false,
         });
 
-        faceMeshRef.current = faceMesh;
-        cameraRef.current = camera;
+        if (!videoRef.current) {
+          stream.getTracks().forEach((track) => track.stop());
+          return;
+        }
 
-        await camera.start();
+        videoRef.current.srcObject = stream;
+        await videoRef.current.play();
+
+        let animationFrameId = 0;
+        let isSendingFrame = false;
+
+        const processFrame = async () => {
+          if (cancelled || !videoRef.current) return;
+
+          if (!isSendingFrame && videoRef.current.readyState >= 2) {
+            isSendingFrame = true;
+            try {
+              await faceMesh.send({ image: videoRef.current });
+            } finally {
+              isSendingFrame = false;
+            }
+          }
+
+          animationFrameId = window.requestAnimationFrame(processFrame);
+        };
+
+        animationFrameId = window.requestAnimationFrame(processFrame);
+
+        cameraRef.current = {
+          stop: () => {
+            window.cancelAnimationFrame(animationFrameId);
+            stream.getTracks().forEach((track) => track.stop());
+            if (videoRef.current) {
+              videoRef.current.srcObject = null;
+            }
+          },
+        };
 
         if (!cancelled) {
           setCameraReady(true);
