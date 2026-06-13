@@ -1,0 +1,19 @@
+{
+  "name": "PostureGuard",
+  "short_name": "PostureGuard",
+  "description": "AI 기반 자세 및 눈 피로 관리 웹앱",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f8fafc",
+  "theme_color": "#f8fafc",
+  "orientation": "landscape",
+  "icons": [
+    {
+      "src": "./icons/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
