@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" fill="none">
+  <rect width="400" height="300" rx="16" fill="#F8FAFC"/>
+  <circle cx="200" cy="125" r="52" fill="#FFE8D6" stroke="#1D1D1F" stroke-width="2"/>
+  <ellipse cx="182" cy="121" rx="11" ry="8" fill="#fff" stroke="#1D1D1F" stroke-width="2"/>
+  <ellipse cx="218" cy="121" rx="11" ry="8" fill="#fff" stroke="#1D1D1F" stroke-width="2"/>
+  <circle cx="200" cy="125" r="38" stroke="#007AFF" stroke-width="3"/>
+  <path d="M200 87a38 38 0 1 0 0 76" stroke="#34C759" stroke-width="4" stroke-linecap="round"/>
+  <path d="M200 163a38 38 0 1 0 0-76" stroke="#FF9500" stroke-width="4" stroke-linecap="round" stroke-dasharray="6 6"/>
+  <text x="200" y="230" text-anchor="middle" fill="#1D1D1F" font-family="Segoe UI,sans-serif" font-size="18" font-weight="700">‘)¥ Ð ø¬0</text>
+  <text x="200" y="255" text-anchor="middle" fill="#6E6E73" font-family="Segoe UI,sans-serif" font-size="13"> )¥ 3~54</text>
+</svg>

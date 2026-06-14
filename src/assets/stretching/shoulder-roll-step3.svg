@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" fill="none">
+  <rect width="400" height="300" rx="16" fill="#F8FAFC"/>
+  <ellipse cx="200" cy="255" rx="80" ry="10" fill="#E5E7EB"/>
+  <circle cx="200" cy="105" r="26" fill="#FFE8D6" stroke="#1D1D1F" stroke-width="2"/>
+  <path d="M148 150c-18-8-18-28 0-36M252 150c18-8 18-28 0-36" stroke="#1D1D1F" stroke-width="9" stroke-linecap="round"/>
+  <path d="M120 170a80 50 0 0 0 160 0" stroke="#007AFF" stroke-width="4" fill="none"/>
+  <path d="M280 170a80 50 0 0 1-160 0" stroke="#34C759" stroke-width="4" fill="none" stroke-dasharray="8 6"/>
+  <text x="200" y="40" text-anchor="middle" fill="#1D1D1F" font-family="Segoe UI,sans-serif" font-size="18" font-weight="700">^ 5Œ · ¤ 5Œ</text>
+  <text x="200" y="62" text-anchor="middle" fill="#6E6E73" font-family="Segoe UI,sans-serif" font-size="13">œœˆ lŒ Ì½Èä</text>
+</svg>

@@ -1,0 +1,46 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Generate tray icons
+        run: node electron/scripts/make-tray-icons.cjs
+
+      - name: Build web bundle
+        run: npm run build
+
+      - name: Package desktop source
+        shell: pwsh
+        run: |
+          $releaseDir = "release/EaseUp-desktop"
+          New-Item -ItemType Directory -Force -Path $releaseDir | Out-Null
+          Copy-Item -Recurse dist, electron, public, scripts, src, desktop.bat, package.json, package-lock.json, README.md, prd.md $releaseDir
+          Compress-Archive -Path $releaseDir -DestinationPath release/EaseUp-desktop.zip -Force
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: release/EaseUp-desktop.zip
+          generate_release_notes: true
